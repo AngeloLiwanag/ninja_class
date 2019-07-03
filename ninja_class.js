@@ -25,18 +25,55 @@ function Ninja(name, health){
 
     this.showStats = function(){
         console.log("Name: " + this.name + " Health: " + this.health + " Speed: " + speed + " Strength: " + strength);
-        return this;
     }
 
     this.drinkSake = function(){
-      var sake = 10;
-      this.health += sake;
-      console.log(this.health)
+      this.health += 10;
+      console.log(this.name + " gained " + this.health)
+    }
+    
+    Ninja.prototype.punch = function(otherNinja){
+      if (otherNinja.name instanceof Ninja === true){
+        otherNinja.health -= 5;
+        console.log(otherNinja.name + ' was punched by ' + this.name + ' and lossed 5 health!')
+        return otherNinja.health;
+      } else {
+        console.log("you are not a ninja");
+      }
+
+    }
+
+    Ninja.prototype.kick = function(otherNinja){
+      if (otherNinja.name instanceof Ninja === true){
+        otherNinja.health -= 15;
+        console.log(otherNinja.name + ' was kicked by ' + this.name + ' and lossed 15 health!')
+        return otherNinja.health;
+      } else {
+        console.log('you are not a ninja')
+      }
     }
 }
 
-var ninjaNew = new Ninja("Angelo");
+function notNinja(name){
+    this.name = name;
+    this.health = 100;
+    var speed = 3;
+    var strength = 3;
+}
 
-ninjaNew.sayName();
-ninjaNew.showStats();
-ninjaNew.drinkSake();
+var ninjaNew1 = new Ninja("Angelo");
+var ninjaNew2 = new Ninja("Art");
+
+var notNinjaNew1 = new notNinja('kian');
+
+ninjaNew1.sayName();
+ninjaNew1.showStats();
+ninjaNew1.drinkSake();
+ninjaNew1.punch(ninjaNew2);
+
+
+ninjaNew1.punch(notNinjaNew1);
+
+ninjaNew2.sayName();
+ninjaNew2.showStats();
+
