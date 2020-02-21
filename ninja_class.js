@@ -29,6 +29,7 @@ function Ninja(name, health){
 
     this.drinkSake = function(){
       this.health += 10;
+      
       console.log(this.name + " gained " + this.health)
     }
     
